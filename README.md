@@ -71,6 +71,7 @@ Now let's try to install knetwalk from admin user:
 $CONTAINERS_FOLDER/scripts/run-arch-box-admin.sh
 
 sudo pacman -Sy knetwalk
+sudo pacman -Sy noto-fonts
 
 # And running should work now
 export $(dbus-launch)
