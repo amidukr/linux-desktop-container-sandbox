@@ -9,7 +9,7 @@ export CONTAINER_USER=demo
 Install Container and initialize Containers script
 ``` bash
 mkdir $CONTAINERS_FOLDER
-git clone git@github.com:amidukr/linux-desktop-container-sandbox.git $CONTAINERS_FOLDER/scripts
+git clone https://github.com/amidukr/linux-desktop-container-sandbox.git $CONTAINERS_FOLDER/scripts
 
 $CONTAINERS_FOLDER/scripts/init.sh
 ```
