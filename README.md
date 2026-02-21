@@ -83,8 +83,6 @@ And same using unprivileged user
 ```
 $CONTAINERS_FOLDER/scripts/run-arch-box-user.sh
 
-sudo pacman -Sy knetwalk
-
 # And running should work now
 export $(dbus-launch)
 knetwalk 
