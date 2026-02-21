@@ -89,4 +89,11 @@ export $(dbus-launch)
 knetwalk 
 
 exit
+
+```
+
+Let's check how much space was used:
+
+```bash
+du -dh 1 $CONTAINERS_FOLDER/* 2>/dev/null
 ```
