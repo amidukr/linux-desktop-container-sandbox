@@ -92,8 +92,8 @@ exit
 
 ```
 
-Let's check how much space was used:
+Let's check how much space totally was used:
 
 ```bash
-du -dh 1 $CONTAINERS_FOLDER/* 2>/dev/null
+du -h -d 1 $CONTAINERS_FOLDER 2>/dev/null
 ```
