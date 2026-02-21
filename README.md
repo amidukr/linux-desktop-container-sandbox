@@ -6,7 +6,7 @@ You might ask: *“I can already run Podman containers — why so much scripting
 
 The key difference is that **this container is persistent, mutable, and imageless**, whereas typical Podman containers are **volatile**, and images are **immutable once built**.
 
-Typical Podman/Docker workflows are designed for server workloads: you build an immutable image and deploy copies across multiple nodes.
+Typical Podman/Docker workflows target server environments: you build an immutable image and deploy it across multiple nodes in a cluster.
 
 Here, we’re using Podman differently — inspired by **Bubblewrap** and **Flatpak** — to create an isolated environment for desktop applications. By leveraging Podman’s advanced features (like user namespaces and runtime isolation), this sandbox allows you to isolate applications from your host system while retaining flexibility and persistence.
 
@@ -21,7 +21,7 @@ If you’re familiar with **Bubblewrap** or **Flatpak**, you already understand 
 
 # Why Not Flatpak or Bubblewrap
 
-- **Bubblewrap**: Podman --rootfs mode works in a way similar to Bubblewrap, providing filesystem-level isolation. However, Bubblewrap configurations can be more complex and easier to misconfigure, which may accidentally compromise isolation. Podman offers **additional advanced features**, such as configurable networking and user namespace mapping, making it **more robust and secure for desktop sandboxing**.
+- **Bubblewrap**: Podman `--rootfs` mode works in a way similar to Bubblewrap, providing filesystem-level isolation. However, Bubblewrap configurations can be more complex and easier to misconfigure, which may accidentally compromise isolation. Podman offers **additional advanced features**, such as configurable networking and user namespace mapping, making it **more robust and secure for desktop sandboxing**.
 - **Flatpak**: Provides sandboxing for desktop apps but is limited in flexibility. Flatpak apps **cannot use the system’s package manager** directly, making it harder to manage dependencies or configure complex runtime environments. This sandbox gives you **both GUI-ready isolation and full package manager control**.
 
 ## Why Not Standard Podman
