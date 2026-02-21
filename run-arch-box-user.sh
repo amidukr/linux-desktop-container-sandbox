@@ -1,6 +1,6 @@
 #!/bin/bash
 
-podman run -it \
+podman run -it -rm\
 	--cgroup-manager=cgroupfs \
 	--read-only \
 	--user 1000:1000 \

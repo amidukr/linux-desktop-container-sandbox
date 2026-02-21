@@ -1,6 +1,6 @@
 #!/bin/bash
 
-podman run -it \
+podman run -it -rm\
 	--cgroup-manager=cgroupfs \
 	--user 0:0 \
         --userns=host \
