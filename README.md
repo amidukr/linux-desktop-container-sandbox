@@ -32,7 +32,7 @@ $CONTAINERS_FOLDER/scripts/run-arch-box-user.sh
 echo Hello World> ~/file.txt
 # Should succeed
 
-#Now let's try to do the same with root directory
+#Let's try to do the same with root directory
 echo Hello World> /file.txt
 # Will fail because root fs mounted as readonly, expected behaviour
 
@@ -50,7 +50,7 @@ sudo pacman -Sy knetwalk
 exit
 ```
 
-Now let's try to check permission for admin user:
+Same check by for admin user:
 ```bash
 $CONTAINERS_FOLDER/scripts/run-arch-box-admin.sh
 
@@ -66,7 +66,7 @@ exit
 ```
 
 
-Now let's try to install knetwalk from admin user:
+Installing knetwalk from admin user:
 ```
 $CONTAINERS_FOLDER/scripts/run-arch-box-admin.sh
 
@@ -80,7 +80,7 @@ knetwalk
 exit
 ```
 
-And same using unprivileged user
+And running knetwalk from unprivileged user
 ```
 $CONTAINERS_FOLDER/scripts/run-arch-box-user.sh
 
@@ -92,7 +92,7 @@ exit
 
 ```
 
-Let's check how much space totally was used:
+And finally let's check how much space totally was used:
 
 ```bash
 du -h -d 1 $CONTAINERS_FOLDER 2>/dev/null
