@@ -61,7 +61,7 @@ echo Hello World> /file.txt
 knetwalk
 pacman -Sy knetwalk
 
-# All this command above should work or fail similarly sa for simple user
+# All this command above should work or fail similarly as for simple user
 
 exit
 ```
@@ -85,7 +85,7 @@ And running knetwalk from unprivileged user
 ```
 $CONTAINERS_FOLDER/scripts/run-arch-box-user.sh
 
-# And running should work now
+# Just same again
 export $(dbus-launch)
 knetwalk 
 
