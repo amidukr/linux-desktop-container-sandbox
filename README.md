@@ -28,6 +28,7 @@ If you’re familiar with **Bubblewrap** or **Flatpak**, you already understand 
 
 - Standard Podman containers are designed for ephemeral workloads: once the container stops, changes are lost unless committed to a new image.
 - Podman images are immutable by design, making iterative experimentation with GUI desktop apps cumbersome.
+- The sandbox run in Podman `--rootfs mode`, which is fully imageless and unlike typical rootless containers using fuse-overlayfs, this mode avoids user-space overlay layers entirely, resulting in superior performance, especially for GUI applications and desktop workflows.
 - While Podman `--rootfs` provides Bubblewrap-like isolation, this project combines it with **persistent, mutable, desktop-friendly** scripting that also leverages **Podman’s advanced networking and user-mapping features**. The result is **secure, flexible, GUI-ready, persistent sandboxing** that standard containers alone don’t provide.
 
 # Quick Start
