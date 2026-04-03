@@ -2,7 +2,7 @@
 
 This project provides scripting for **imageless, mutable, persistent, and lightweight** Linux desktop runtimes inside a Podman container. It’s perfect for testing apps, experimenting with Linux commands, or running GUI applications **without affecting your main system**.
 
-<img alt="Linux desktop container sandbox" src="/assets/linux-sandbox.png", width="700")
+<img alt="Linux desktop container sandbox" src="/assets/linux-sandbox.png", width="700"/>
 
 You might ask: *“I can already run Podman containers — why so much scripting, and what’s special here?”*
 
