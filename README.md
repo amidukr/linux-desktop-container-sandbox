@@ -1,8 +1,10 @@
 # Overview
 
-This project provides scripting for **imageless, mutable, persistent, and lightweight** Linux desktop runtimes inside a Podman container. It’s perfect for testing apps, experimenting with Linux commands, or running GUI applications **without affecting your main system**.
+<p align="center">
+   <img alt="Linux desktop container sandbox" src="/docs/images/linux-sandbox.png" width="700px" style="max-width: 700px; width: 100%;"/>
+</p>
 
-<img alt="Linux desktop container sandbox" src="/assets/linux-sandbox.png" width="700"/>
+This project provides scripting for **imageless, mutable, persistent, and lightweight** Linux desktop runtimes inside a Podman container. It’s perfect for testing apps, experimenting with Linux commands, or running GUI applications **without affecting your main system**.
 
 You might ask: *“I can already run Podman containers — why so much scripting, and what’s special here?”*
 
@@ -32,6 +34,32 @@ If you’re familiar with **Bubblewrap** or **Flatpak**, you already understand 
 - Podman images are immutable by design, making iterative experimentation with GUI desktop apps cumbersome.
 - The sandbox run in Podman `--rootfs` mode, which is fully **imageless** and **unlike typical rootless containers** using fuse-overlayfs, **this mode avoids user-space overlay layers entirely**, resulting in **superior performance**, especially for GUI applications and desktop workflows.
 - While Podman `--rootfs` provides Bubblewrap-like isolation, this project combines it with **persistent, mutable, desktop-friendly** scripting that also leverages **Podman’s advanced networking and user-mapping features**. The result is **secure, flexible, GUI-ready, persistent sandboxing** that standard containers alone don’t provide.
+
+# Architecture and Execution Model
+This project uses Podman in a different way than a typical server-style container workflow.
+
+Instead of running directly from an immutable image, the scripts first build an Arch-based image, extract its filesystem into a host-side rootfs directory, and then launch the sandbox from that extracted filesystem using Podman `--rootfs` mode.
+
+That structure gives the sandbox two useful properties at the same time:
+
+- **Persistent and mutable runtime**: system changes can be preserved across sessions because the sandbox runs from a real extracted root filesystem stored on disk.
+- **Strong runtime isolation for daily use**: the regular user launcher mounts that root filesystem as read-only, bind-mounts only the user home directory, and recreates temporary runtime paths such as `/tmp` and `/run` as tmpfs mounts.
+
+The project therefore separates **persistent state** from **runtime policy**.  
+The filesystem can remain stable and reusable across launches, while each session can still apply strict restrictions such as read-only root, isolated home mounts, controlled desktop socket access, and limited privileges.
+
+There are two main usage modes:
+
+- **User mode**: intended for normal application usage. The sandbox runs with a read-only root filesystem and a persistent user home directory.
+- **Admin mode**: intended for intentional maintenance. The sandbox runs from the same extracted rootfs without the read-only restriction, allowing package installation and other system-level changes that persist for future sessions.
+
+This makes the project closer to a lightweight, desktop-oriented sandbox runtime than to a conventional disposable Podman container.
+
+The diagram below illustrates the internal architecture and isolation model:
+
+<p align="center">
+  <img src="/docs/images/linux-sandbox-diagram.png" style="max-width: 900px; width: 100%;" />
+</p>
 
 # Quick Start
 
