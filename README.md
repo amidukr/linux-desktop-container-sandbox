@@ -35,7 +35,7 @@ If you’re familiar with **Bubblewrap** or **Flatpak**, you already understand 
 - The sandbox run in Podman `--rootfs` mode, which is fully **imageless** and **unlike typical rootless containers** using fuse-overlayfs, **this mode avoids user-space overlay layers entirely**, resulting in **superior performance**, especially for GUI applications and desktop workflows.
 - While Podman `--rootfs` provides Bubblewrap-like isolation, this project combines it with **persistent, mutable, desktop-friendly** scripting that also leverages **Podman’s advanced networking and user-mapping features**. The result is **secure, flexible, GUI-ready, persistent sandboxing** that standard containers alone don’t provide.
 
-# Architecture
+# Architecture and Execution Model
 This project uses Podman in a different way than a typical server-style container workflow.
 
 Instead of running directly from an immutable image, the scripts first build an Arch-based image, extract its filesystem into a host-side rootfs directory, and then launch the sandbox from that extracted filesystem using Podman `--rootfs` mode.
